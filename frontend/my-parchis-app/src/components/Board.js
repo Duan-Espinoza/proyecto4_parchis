@@ -1,33 +1,21 @@
 import React from 'react';
-import Square from './Square';
-import Piece from './Piece';
-import './Board.css';
 
 const Board = ({ gameState }) => {
-    const renderSquare = (i) => {
-        let piece = null;
-        gameState.positions.forEach(player => {
-            if (player.position === i) {
-                piece = <Piece player={player.player} />;
-            }
-        });
+    const { positions } = gameState;
+    const boardSize = 16; // Tamaño del tablero
+    const board = Array(boardSize).fill(null);
 
-        return (
-            <Square key={i} id={i}>
-                {piece}
-            </Square>
-        );
-    };
-
-    const boardSize = 16; // Puedes ajustar esto según el tamaño del tablero que desees
-    const squares = [];
-    for (let i = 0; i < boardSize; i++) {
-        squares.push(renderSquare(i));
-    }
+    positions.forEach(pos => {
+        board[pos.position] = pos.player;
+    });
 
     return (
-        <div className="board">
-            {squares}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 50px)', gap: '5px' }}>
+            {board.map((cell, index) => (
+                <div key={index} style={{ width: '50px', height: '50px', border: '1px solid black', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: cell ? (cell === 1 ? 'red' : 'blue') : 'white' }}>
+                    {cell ? cell : ''}
+                </div>
+            ))}
         </div>
     );
 };

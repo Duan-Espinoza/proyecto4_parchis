@@ -10,10 +10,23 @@ app.use(express.json());
 let gameState = {
     playerTurn: 1,
     positions: [
-        { player: 1, position: 0 }, // Jugador 1
-        { player: 2, position: 0 }  // Jugador 2
+        { player: 1, position: 0 },
+        { player: 2, position: 0 }
     ]
 };
+
+// Función para mover la ficha según las reglas
+function movePiece(playerIndex, roll) {
+    let newPosition = gameState.positions[playerIndex].position + roll;
+    
+    // Si la nueva posición excede el tablero (simple de 16 casillas), se ajusta
+    if (newPosition >= 16) {
+        newPosition = 16;
+    }
+
+    // Actualizar la posición del jugador
+    gameState.positions[playerIndex].position = newPosition;
+}
 
 // Endpoint para obtener el estado del juego
 app.get('/game', (req, res) => {
@@ -23,8 +36,10 @@ app.get('/game', (req, res) => {
 // Endpoint para tirar el dado
 app.post('/roll', (req, res) => {
     const roll = Math.floor(Math.random() * 6) + 1;
-    let currentPlayer = gameState.positions[gameState.playerTurn - 1];
-    currentPlayer.position += roll;
+    const currentPlayerIndex = gameState.playerTurn - 1;
+    
+    // Mover la ficha del jugador actual
+    movePiece(currentPlayerIndex, roll);
 
     // Lógica de fin de turno
     gameState.playerTurn = gameState.playerTurn === 1 ? 2 : 1;
