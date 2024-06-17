@@ -1,0 +1,8 @@
+Nombre del curso: Lenguajes de Programación.
+Número de semestre y año lectivo: primer semestre 2024.
+Nombre de los estudiantes: Duan Espinoza.
+Número de carnet del estudiante:2019079490.
+Número de proyecto programado: 4.
+Fecha de entrega: 16/06/2024.
+Estatus de la entrega: 
+Deplorable
