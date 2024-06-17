@@ -1,5 +1,4 @@
-# proyecto4_parchis
-Proyecto 4 de lenguajes
+
 
 
 <!-- PROJECT LOGO -->
@@ -9,7 +8,7 @@ Proyecto 4 de lenguajes
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Firma_TEC.svg/1200px-Firma_TEC.svg.png" alt="Logo" width="500" height="80">
   </a>
 
-  <h3 align="center">Proyecto #4 pARCHIS</h3>
+  <h3 align="center">Proyecto #4 PARCHIS</h3>
 
   <p align="center">
     Lenguajes de programación
